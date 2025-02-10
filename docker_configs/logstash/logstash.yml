@@ -1,0 +1,7 @@
+node.name: logstash
+api.http.host: 0.0.0.0
+
+config.reload.automatic: true
+config.reload.interval: 10s
+
+xpack.monitoring.enabled: false

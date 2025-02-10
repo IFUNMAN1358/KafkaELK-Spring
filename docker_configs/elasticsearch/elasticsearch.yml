@@ -1,0 +1,13 @@
+node.name: elasticsearch
+cluster.name: "elk"
+discovery.type: single-node
+network.host: 0.0.0.0
+
+xpack.license.self_generated.type: basic
+xpack.security.enabled: true
+xpack.security.authc.api_key.enabled: true
+
+cluster.routing.allocation.disk.threshold_enabled: false
+#cluster.routing.allocation.disk.watermark.low: "5gb"
+#cluster.routing.allocation.disk.watermark.high: "3gb"
+#cluster.routing.allocation.disk.watermark.flood_stage: "1gb"
