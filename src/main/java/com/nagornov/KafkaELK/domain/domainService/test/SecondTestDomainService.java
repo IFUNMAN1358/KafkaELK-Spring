@@ -1,4 +1,4 @@
-package com.nagornov.KafkaELK.domain.service.test;
+package com.nagornov.KafkaELK.domain.domainService.test;
 
 import com.nagornov.KafkaELK.infrastructure.persistence.test.SecondTestRepository;
 import lombok.RequiredArgsConstructor;

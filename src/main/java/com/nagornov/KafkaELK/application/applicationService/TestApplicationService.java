@@ -1,8 +1,8 @@
 package com.nagornov.KafkaELK.application.applicationService;
 
-import com.nagornov.KafkaELK.domain.service.test.FirstTestDomainService;
-import com.nagornov.KafkaELK.domain.service.test.SecondTestDomainService;
-import com.nagornov.KafkaELK.domain.service.log.LoggerApplicationService;
+import com.nagornov.KafkaELK.domain.domainService.test.FirstTestDomainService;
+import com.nagornov.KafkaELK.domain.domainService.test.SecondTestDomainService;
+import com.nagornov.KafkaELK.domain.domainService.log.ApplicationServiceLogger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +12,11 @@ public class TestApplicationService {
 
     private final FirstTestDomainService firstTestDomainService;
     private final SecondTestDomainService secondTestDomainService;
-    private final LoggerApplicationService loggerApplicationService;
+    private final ApplicationServiceLogger applicationServiceLoggerService;
 
     public String someMethod() {
 
-        loggerApplicationService.info("some message");
+        applicationServiceLoggerService.info("some message");
 
         String str1 = firstTestDomainService.someMethod();
         String str2 = secondTestDomainService.someMethod();

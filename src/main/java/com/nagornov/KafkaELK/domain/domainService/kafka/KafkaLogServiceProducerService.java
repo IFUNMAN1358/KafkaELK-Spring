@@ -1,4 +1,4 @@
-package com.nagornov.KafkaELK.domain.service.kafka;
+package com.nagornov.KafkaELK.domain.domainService.kafka;
 
 import com.nagornov.KafkaELK.domain.model.Log;
 import com.nagornov.KafkaELK.infrastructure.persistence.kafka.repository.KafkaLogServiceProducerRepository;

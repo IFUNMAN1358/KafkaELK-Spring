@@ -1,4 +1,9 @@
 - pipeline.id: log_service
-  pipeline.workers: 1
-  pipeline.batch.size: 1
+  pipeline.workers: 2
+  pipeline.batch.size: 50
   path.config: "/usr/share/logstash/clients/log_service.conf"
+
+- pipeline.id: corporate_messenger_service
+  pipeline.workers: 2
+  pipeline.batch.size: 50
+  path.config: "/usr/share/logstash/clients/corporate_messenger_service.conf"

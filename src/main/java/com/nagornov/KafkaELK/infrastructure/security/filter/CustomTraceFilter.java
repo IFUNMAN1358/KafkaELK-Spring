@@ -1,6 +1,6 @@
 package com.nagornov.KafkaELK.infrastructure.security.filter;
 
-import com.nagornov.KafkaELK.domain.core.TraceContextHolder;
+import com.nagornov.KafkaELK.domain.core.LogContextHolder;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
@@ -30,15 +30,15 @@ public class CustomTraceFilter extends GenericFilterBean {
             if (!StringUtils.hasText(traceId)) {
                 traceId = UUID.randomUUID().toString();
             }
-            TraceContextHolder.setTraceId(traceId);
+            LogContextHolder.setTraceId(traceId);
 
             String spanId = UUID.randomUUID().toString();
-            TraceContextHolder.setSpanId(spanId);
+            LogContextHolder.setSpanId(spanId);
         }
         try {
             chain.doFilter(request, response);
         } finally {
-            TraceContextHolder.clear();
+            LogContextHolder.clear();
         }
     }
 
