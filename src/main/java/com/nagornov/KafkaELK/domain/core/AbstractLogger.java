@@ -39,6 +39,12 @@ public abstract class AbstractLogger {
        logSender.sendLog(log);
     }
 
+    // П
+    // У
+    // Т
+    // И
+    // Н
+
     //
     // LOG
     //
