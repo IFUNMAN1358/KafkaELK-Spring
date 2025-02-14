@@ -1,7 +1,7 @@
 package com.nagornov.KafkaELK.infrastructure.persistence.kafka.repository;
 
 import com.nagornov.KafkaELK.domain.enums.KafkaServiceTopic;
-import com.nagornov.KafkaELK.domain.model.Log;
+import com.nagornov.KafkaELK.sharedKernel.logs.model.Log;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;

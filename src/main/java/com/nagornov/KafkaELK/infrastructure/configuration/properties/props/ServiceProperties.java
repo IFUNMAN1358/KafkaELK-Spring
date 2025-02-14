@@ -10,6 +10,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class ServiceProperties {
 
     private String serverUrl;
-    private String name;
 
 }

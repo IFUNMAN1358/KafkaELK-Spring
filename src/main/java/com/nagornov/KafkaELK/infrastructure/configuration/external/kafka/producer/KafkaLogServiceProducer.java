@@ -1,7 +1,7 @@
 package com.nagornov.KafkaELK.infrastructure.configuration.external.kafka.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nagornov.KafkaELK.domain.model.Log;
+import com.nagornov.KafkaELK.sharedKernel.logs.model.Log;
 import com.nagornov.KafkaELK.infrastructure.configuration.properties.props.KafkaProperties;
 import com.nagornov.KafkaELK.infrastructure.persistence.kafka.transfer.serializer.KafkaLogSerializer;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package com.nagornov.KafkaELK.application.advice;
 
-import com.nagornov.KafkaELK.domain.domainService.log.AdviceLogger;
+import com.nagornov.KafkaELK.domain.logger.AdviceLogger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

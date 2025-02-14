@@ -1,4 +1,4 @@
-package com.nagornov.KafkaELK.domain.enums;
+package com.nagornov.KafkaELK.sharedKernel.logs.enums;
 
 import lombok.Getter;
 

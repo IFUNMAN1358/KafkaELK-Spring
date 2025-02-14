@@ -2,7 +2,7 @@ package com.nagornov.KafkaELK.infrastructure.persistence.kafka.transfer.serializ
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nagornov.KafkaELK.domain.model.Log;
+import com.nagornov.KafkaELK.sharedKernel.logs.model.Log;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Serializer;

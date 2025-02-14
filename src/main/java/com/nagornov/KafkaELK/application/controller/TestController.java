@@ -1,7 +1,7 @@
 package com.nagornov.KafkaELK.application.controller;
 
 import com.nagornov.KafkaELK.application.applicationService.TestApplicationService;
-import com.nagornov.KafkaELK.domain.domainService.log.ControllerLogger;
+import com.nagornov.KafkaELK.domain.logger.ControllerLogger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

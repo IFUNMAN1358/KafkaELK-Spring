@@ -2,7 +2,7 @@ package com.nagornov.KafkaELK.application.applicationService;
 
 import com.nagornov.KafkaELK.domain.domainService.test.FirstTestDomainService;
 import com.nagornov.KafkaELK.domain.domainService.test.SecondTestDomainService;
-import com.nagornov.KafkaELK.domain.domainService.log.ApplicationServiceLogger;
+import com.nagornov.KafkaELK.domain.logger.ApplicationServiceLogger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
