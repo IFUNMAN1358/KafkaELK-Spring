@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Configuration;
     ElasticProperties.class,
     LogstashClientUdpProperties.class,
     LogstashClientTcpProperties.class,
-    LogstashClientHttpProperties.class
+    LogstashClientHttpProperties.class,
+    ExternalClientsProperties.class,
+    CsrfProperties.class
 })
 public class PropertiesConfiguration {
 }

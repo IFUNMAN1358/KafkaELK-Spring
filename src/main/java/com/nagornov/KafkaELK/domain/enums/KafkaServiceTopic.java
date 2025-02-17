@@ -5,6 +5,7 @@ import lombok.Getter;
 @Getter
 public enum KafkaServiceTopic {
 
+    DEFAULT_SERVICE_TOPIC("default-service-topic"),
     LOG_SERVICE_TOPIC("log-service-topic"),
     CORPORATE_MESSENGER_SERVICE_TOPIC("corporate-messenger-service-topic");
 

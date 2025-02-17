@@ -11,6 +11,11 @@ import org.springframework.kafka.annotation.EnableKafka;
 public class KafkaTopicConfiguration {
 
     @Bean
+    public NewTopic defaultServiceTopic() {
+        return new NewTopic(KafkaServiceTopic.DEFAULT_SERVICE_TOPIC.getTopicName(), 1, (short) 1);
+    }
+
+    @Bean
     public NewTopic logServiceTopic() {
         return new NewTopic(KafkaServiceTopic.LOG_SERVICE_TOPIC.getTopicName(), 1, (short) 1);
     }

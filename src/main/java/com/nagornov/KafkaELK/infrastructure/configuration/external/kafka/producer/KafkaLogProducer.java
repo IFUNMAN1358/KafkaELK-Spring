@@ -1,9 +1,9 @@
 package com.nagornov.KafkaELK.infrastructure.configuration.external.kafka.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nagornov.KafkaELK.sharedKernel.logs.model.Log;
 import com.nagornov.KafkaELK.infrastructure.configuration.properties.props.KafkaProperties;
 import com.nagornov.KafkaELK.infrastructure.persistence.kafka.transfer.serializer.KafkaLogSerializer;
+import com.nagornov.KafkaELK.sharedKernel.logs.model.Log;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -18,18 +18,18 @@ import java.util.Map;
 
 @Configuration
 @RequiredArgsConstructor
-public class KafkaLogServiceProducer {
+public class KafkaLogProducer {
 
     private final KafkaProperties kafkaProperties;
     private final ObjectMapper objectMapper;
 
     @Bean
-    public KafkaTemplate<String, Log> kafkaLogServiceTemplate() {
-        return new KafkaTemplate<>(kafkaLogServiceProducerFactory());
+    public KafkaTemplate<String, Log> kafkaLogTemplate() {
+        return new KafkaTemplate<>(kafkaLogProducerFactory());
     }
 
     @Bean
-    public ProducerFactory<String, Log> kafkaLogServiceProducerFactory() {
+    public ProducerFactory<String, Log> kafkaLogProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getBootstrapServers());
         configProps.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 1000);

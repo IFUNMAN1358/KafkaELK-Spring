@@ -1,8 +1,11 @@
 package com.nagornov.KafkaELK.infrastructure.configuration.security;
 
+import com.nagornov.KafkaELK.infrastructure.security.filter.CustomCorsFilter;
+import com.nagornov.KafkaELK.infrastructure.security.filter.CustomCsrfFilter;
 import com.nagornov.KafkaELK.infrastructure.security.filter.CustomTraceFilter;
 import com.nagornov.KafkaELK.infrastructure.security.handler.CustomAccessDeniedHandler;
 import com.nagornov.KafkaELK.infrastructure.security.handler.CustomAuthenticationEntryPoint;
+import com.nagornov.KafkaELK.infrastructure.security.manager.ExternalClientsAuthorizationManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,13 +18,20 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import static org.springframework.security.authorization.AuthorizationManagers.allOf;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
+    private final CustomCorsFilter corsFilter;
+    private final CustomCsrfFilter csrfFilter;
     private final CustomTraceFilter traceFilter;
+
+    private final ExternalClientsAuthorizationManager authExternalClient;
 
     private final CustomAccessDeniedHandler accessDeniedHandler;
     private final CustomAuthenticationEntryPoint authenticationEntryPoint;
@@ -39,10 +49,12 @@ public class SecurityConfiguration {
                     .frameOptions(HeadersConfigurer.FrameOptionsConfig::deny)
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .addFilterBefore(traceFilter, ChannelProcessingFilter.class)
+            .addFilterBefore(corsFilter, ChannelProcessingFilter.class)
+            .addFilterBefore(csrfFilter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(traceFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(auth -> auth
 
-                    .requestMatchers(HttpMethod.GET, "/api/test/first").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/log/send").access(allOf(authExternalClient))
 
                     .anyRequest().authenticated()
             )

@@ -9,14 +9,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class KafkaLogServiceProducerRepository {
+public class KafkaLogProducerRepository {
 
     private final KafkaTemplate<String, Log> kafkaLogServiceTemplate;
 
-    public void sendLog(@NotNull Log log) {
+    public void sendMessage(@NotNull KafkaServiceTopic kafkaServiceTopic, @NotNull Log log) {
         kafkaLogServiceTemplate.send(
-                KafkaServiceTopic.LOG_SERVICE_TOPIC.getTopicName(),
-                log
+                kafkaServiceTopic.getTopicName(), log
         );
     }
 
