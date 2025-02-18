@@ -1,7 +1,7 @@
 package com.nagornov.KafkaELK.application.applicationService;
 
 import com.nagornov.KafkaELK.application.dto.request.LogRequest;
-import com.nagornov.KafkaELK.application.dto.response.MessageResponse;
+import com.nagornov.KafkaELK.application.dto.response.HttpResponse;
 import com.nagornov.KafkaELK.domain.domainService.KafkaLogProducerService;
 import com.nagornov.KafkaELK.domain.domainService.LogRoutingService;
 import com.nagornov.KafkaELK.domain.enums.KafkaServiceTopic;
@@ -18,7 +18,7 @@ public class LogApplicationService {
     private final KafkaLogProducerService kafkaLogProducerService;
 
 
-    public MessageResponse sendLog(@NotNull LogRequest request) {
+    public HttpResponse sendLog(@NotNull LogRequest request) {
 
         Log log = request.getLog();
         String serviceName = log.getServiceName();
@@ -26,7 +26,7 @@ public class LogApplicationService {
         KafkaServiceTopic kafkaTopic = logRoutingService.getServiceTopic(serviceName);
         kafkaLogProducerService.sendMessage(kafkaTopic, log);
 
-        return new MessageResponse("Log has been saved", 201);
+        return new HttpResponse("Log has been saved", 201);
     }
 
 }

@@ -2,7 +2,7 @@ package com.nagornov.KafkaELK.application.controller;
 
 import com.nagornov.KafkaELK.application.applicationService.LogApplicationService;
 import com.nagornov.KafkaELK.application.dto.request.LogRequest;
-import com.nagornov.KafkaELK.application.dto.response.MessageResponse;
+import com.nagornov.KafkaELK.application.dto.response.HttpResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +21,8 @@ public class LogController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    ResponseEntity<MessageResponse> sendLog(@RequestBody LogRequest request) {
-        MessageResponse response = logApplicationService.sendLog(request);
+    ResponseEntity<HttpResponse> sendLog(@RequestBody LogRequest request) {
+        HttpResponse response = logApplicationService.sendLog(request);
         return ResponseEntity.status(201).body(response);
     }
 
