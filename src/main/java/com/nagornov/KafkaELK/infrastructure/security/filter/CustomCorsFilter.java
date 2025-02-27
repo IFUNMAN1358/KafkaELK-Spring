@@ -37,7 +37,7 @@ public class CustomCorsFilter extends GenericFilterBean {
 
         response.setHeader("Access-Control-Allow-Origin", allowedOriginValue);
         response.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,PUT,PATCH,OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Trace-Id,X-Api-Key");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Xsrf-Token,X-Trace-Id,X-Api-Key");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {

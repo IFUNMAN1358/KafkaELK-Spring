@@ -27,6 +27,16 @@ public class CustomCsrfFilter extends GenericFilterBean {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
+        if (request.getRequestURI().startsWith("/api")) {
+            fc.doFilter(request, response);
+            return;
+        }
+
+        if (isSafeMethod(request.getMethod())) {
+            fc.doFilter(request, response);
+            return;
+        }
+
         CsrfToken csrfToken = csrfTokenRepository().loadToken(request);
 
         if (csrfToken == null) {
@@ -70,6 +80,13 @@ public class CustomCsrfFilter extends GenericFilterBean {
             }
         }
         return null;
+    }
+
+    private boolean isSafeMethod(String method) {
+        return "GET".equalsIgnoreCase(method) ||
+               "HEAD".equalsIgnoreCase(method) ||
+               "OPTIONS".equalsIgnoreCase(method) ||
+               "TRACE".equalsIgnoreCase(method);
     }
 
 }

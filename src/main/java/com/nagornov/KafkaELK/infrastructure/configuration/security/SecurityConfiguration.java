@@ -20,8 +20,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.security.authorization.AuthorizationManagers.allOf;
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -54,13 +52,9 @@ public class SecurityConfiguration {
             .addFilterBefore(traceFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(auth -> auth
 
-                    .requestMatchers(HttpMethod.POST, "/api/v1/log/send").access(allOf(authExternalClient))
+                    .requestMatchers(HttpMethod.POST, "/api/v1/log/send").access(authExternalClient)
 
                     .anyRequest().authenticated()
-            )
-            .exceptionHandling(exceptions -> exceptions
-                    .authenticationEntryPoint(authenticationEntryPoint)
-                    .accessDeniedHandler(accessDeniedHandler)
             );
         return http.build();
     }
